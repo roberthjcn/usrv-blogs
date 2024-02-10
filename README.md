@@ -62,25 +62,25 @@ To get a local copy up and running follow these simple example steps.
 
 ### What verb should you choose for retrieving trade orders with the API server?
 
-- GET
+- Answer: GET
 
 2. You work for a Customer Relationship Management (CRM) company. The company's clients gain CRM access through a RESTful API. The CRM allows clients to add contact information for customers, prospects, and related persons (e.g., virtual assistants or marketing directors). You want to choose an appropriate API request path so clients can easily retrieve information for a single contact while also being flexible for future software changes.
 
 ### Which of the following API paths should you use?
 
-- /contacts/{contact_id}
+- Answer: /contacts/{contact_id}
 
 3. You work for a large social media network, and you've been tasked witherror handling for the API. You're trying to decide on an appropriate errorcode for authentication failures based on non-existent users and incorrect passwords. You want to balance security against brute force attacks with providing descriptive and true error codes.
 
 ### Which HTTP error code(s) should you use to keep the system secure and still report that an error occurred?
 
-- 401 if the user doesn't exist or if the password is wrong.
+- Answer: 401 if the user doesn't exist or if the password is wrong.
 
 4. You're writing documentation for requesting information about a given user in your system. Your system uses UUIDS (universally unique identifiers) as user identifiers. In your documentation, you want to show an example.
 
 ### True or false: You should put a fake UUID into the example code (instead of just the text "UUID") as a placeholder.
 
-- a
+- Answer: TRUE
 
 5. You're building code to handle errors issued from a remote API server. The response may or may not have an error
 
@@ -104,4 +104,4 @@ To get a local copy up and running follow these simple example steps.
 
 ### What strategy should you use to store and access these credentials?
 
-- Put them in a .env file, load data from it into a configuration system, then request the credentials from a database service provider.
+- Answer: Put them in a .env file, load data from it into a configuration system, then request the credentials from a database service provider.

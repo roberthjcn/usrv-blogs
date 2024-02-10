@@ -3,15 +3,18 @@ import bcrypt from 'bcrypt'
 
 import { UserService } from '../services'
 import { validationUserEntry } from '../utils/utils'
+import { HttpResponse } from '../shared/http.shared'
+
+const httpResponse: HttpResponse = new HttpResponse()
 
 export const userController = {
     getAllUser: async (_req: Request, res: Response) => {
         try {
             const userData = await UserService.getAll()
 
-            return res.status(200).send(userData)
-        } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Ok(res, userData)
+        } catch (err) {
+            return httpResponse.Error(res, err)
         }
     },
 
@@ -20,9 +23,9 @@ export const userController = {
             const { id } = req.params
             const userData = await UserService.getUserById(id)
 
-            return res.status(200).send(userData)
-        } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Ok(res, userData)
+        } catch (err) {
+            return httpResponse.Error(res, err)
         }
     },
 
@@ -32,9 +35,9 @@ export const userController = {
             const hashedPassword = await bcrypt.hash(newUserEntry.password, 10);
             const userData = await UserService.createUser({ username: newUserEntry.username, email: newUserEntry.email, password: hashedPassword, createdAt: newUserEntry.createdAt })
 
-            return res.status(200).send(userData)
-        } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Ok(res, userData)
+        } catch (err) {
+            return httpResponse.Error(res, err)
         }
     },
 
@@ -43,9 +46,9 @@ export const userController = {
             const { id } = req.params
             const userData = await UserService.updateUser(id, req.body)
 
-            return res.status(200).send(userData)
+            return httpResponse.Ok(res, userData)
         } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Error(res, err)
         }
     },
 
@@ -54,9 +57,9 @@ export const userController = {
             const { id } = req.params
             const userData = await UserService.deleteUser(id)
 
-            return res.status(200).send(userData)
-        } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Ok(res, userData)
+        } catch (err) {
+            return httpResponse.Error(res, err)
         }
     },
 
@@ -65,9 +68,9 @@ export const userController = {
             const { email } = req.body
             const userData = await UserService.findOneUser(email)
 
-            return res.status(200).send(userData)
-        } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Ok(res, userData)
+        } catch (err) {
+            return httpResponse.Error(res, err)
         }
     }
 }

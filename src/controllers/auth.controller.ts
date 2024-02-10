@@ -4,8 +4,9 @@ import jwt from 'jsonwebtoken'
 
 import { UserService } from '../services'
 import { SECRET_KEY } from '../config/config'
+import { HttpResponse } from '../shared/http.shared'
 
-
+const httpResponse: HttpResponse = new HttpResponse()
 
 export const authController = {
     login: async (req: Request, res: Response) => {
@@ -15,18 +16,18 @@ export const authController = {
             const user = await UserService.findOneUser(email)
 
             if (!user) {
-                return res.status(401).json({ message: 'Correo no se encuentra registrado' })
+                return httpResponse.Unauthorized(res, 'Correo no se encuentra registrado')
             }
             const isPasswordValid = await bcrypt.compare(password, user.password)
 
             if (!isPasswordValid) {
-                return res.status(401).json({ message: 'Contraseña inválida' })
+                return httpResponse.Unauthorized(res, 'Contraseña inválida')
             }
             const token = jwt.sign({ id: user._id }, SECRET_KEY!.toString(), { expiresIn: '1h' })
 
-            return res.status(200).json({ message: 'Inicio de sesión exitoso', token })
+            return httpResponse.Ok(res, { message: 'Inicio de sesión exitoso', token })
         } catch (err: any) {
-            return res.status(400).send({ message: err.message })
+            return httpResponse.Error(res, err)
         }
     }
 }
