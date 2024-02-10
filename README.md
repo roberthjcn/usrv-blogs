@@ -86,22 +86,27 @@ To get a local copy up and running follow these simple example steps.
 
 ### How much work should your method, handleErrors(response), handle?
 
-- Check for the presence of an error. If it exists, set a class property to the error, then throw an exception.
+- Answer: Check for the presence of an error. If it exists, set a class property to the error, then throw an exception.
 
 6. You have two classes: a database driver and an email driver. Both classes need to set errors so that your front-end interface displays any errors that transpire on your platform.
 
 ### Which way should you implement this error handling?
 
-- e
+- Answer: c: Make a driver-based error provider to handle errors in all classes that can issue errors.
 
 7. You need to name the private method in your class that handles loopingthrough eCommerce products to collect and parse data. That data gets stored in an array and set as a class property.
 
 ### Which of the following should you use to name your method?
 
-- k
+- Answer: d: parseDataForProductsAndSetArray()
 
 8. There are multiple places in your codebase that need to access the database. To access the database, you need to supply credentials. You want to balance security with useability.
 
 ### What strategy should you use to store and access these credentials?
 
 - Answer: Put them in a .env file, load data from it into a configuration system, then request the credentials from a database service provider.
+
+9. Question: Given a distributed system that experiences latencies and occasional failures in one of its microservices, how would you optimize it? Describe your approach to identifying the problem, possible solutions, and how you would ensure high availability and resilience
+
+- Answer: Bueno personalmente lo que primero haría es un análisis en donde esta la falla dentro de mi microservicio, para ello creo seria conveniente implementar un sistema de monitorización, con este sistema de monitorización puedo ver los tiempos de respuesta, como el microservicio esta usando los recursos del servidor, etc.
+Una vez identificado el fallo o problema es plantear soluciones para el mismo, una buena solución inicial podría ser la optimización de código y recursos que se proveen al microservicio, tambien sobre la marcha se puede hacer parches y correcciones si es que la optimización es urgente esto nos permitirá solventar en algo los fallos hasta lograr un microservicio más robusto y eficiente. Una vez que se hayan hecho los ajustes necesarios es importante llevar pruebas al microservicio de manera cosntante para garantizar la resilencia.
