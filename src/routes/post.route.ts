@@ -14,5 +14,9 @@ router.put('/:id', postController.updatePost)
 
 router.delete('/:id', postController.deletePost)
 
+router.get('/category/:category', postController.findPostByCategories)
+
+router.get('/tag/:tag', postController.findPostByTags)
+
 
 export default router

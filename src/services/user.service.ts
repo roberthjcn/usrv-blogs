@@ -8,6 +8,9 @@ export const UserService = {
     findOneUser: async (email: string) => {
         return await UserModel.findOne({ email: email })
     },
+    findUser: async (user: Array<string>) => {
+        return await UserModel.find({ username: { $in: user } })
+    },
     getUserById: (id: string) => {
         return UserModel.findById(id)
     },

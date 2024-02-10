@@ -2,6 +2,10 @@ import { z } from 'zod'
 import { IComment, IPost, IUser } from './interfaces'
 
 const postSchema = z.object({
+    author: z.string({
+        invalid_type_error: 'El id del autor debe de ser un texto.',
+        required_error: 'El id del autor es requerido.'
+    }),
     title: z.string({
         invalid_type_error: 'El título del post debe de ser un texto.',
         required_error: 'Título es requerido.'
@@ -10,6 +14,9 @@ const postSchema = z.object({
         invalid_type_error: 'El contenido del post debe de ser un texto.',
         required_error: 'El contenido del post es requerido.'
     }),
+    category: z.array(z.string()),
+    tags: z.array(z.string()),
+    taggedUsers: z.array(z.string()),
     createdAt: z.number().positive({
         message: 'La fecha de creación del post debe ser un número.'
     })

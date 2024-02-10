@@ -15,7 +15,7 @@ export const authController = {
             const user = await UserService.findOneUser(email)
 
             if (!user) {
-                return res.status(401).json({ message: 'Correo inválido' })
+                return res.status(401).json({ message: 'Correo no se encuentra registrado' })
             }
             const isPasswordValid = await bcrypt.compare(password, user.password)
 

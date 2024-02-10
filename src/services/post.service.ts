@@ -16,5 +16,11 @@ export const PostService = {
     },
     deletePost: async (id: string) => {
         return await PostModel.findByIdAndDelete(id)
+    },
+    filterPostByCategory: async (categories: string) => {
+        return await PostModel.find({ category: { $in: categories } })
+    },
+    filterPostByTag: async (tags:string) => {
+        return await PostModel.find({ tags: { $in: tags } })
     }
 }

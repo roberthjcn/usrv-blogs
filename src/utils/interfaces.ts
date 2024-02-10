@@ -2,6 +2,9 @@ export interface IPost {
     content: string
     author: string
     title: string
+    category: Array<string>
+    tags: Array<string>
+    taggedUsers: Array<string>
     createdAt: number
 }
 
